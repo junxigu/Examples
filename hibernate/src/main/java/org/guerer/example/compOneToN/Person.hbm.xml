@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.guerer.example.compOneToN">
+
+	<class name="Person" table="PERSON">
+		<id name="id" column="PERSON_ID">
+			<generator class="increment" />
+		</id>
+		<property name="age" />
+		<component name="address">
+			<parent name="owner" />
+			<property name="detail" />
+			<set name="schools" cascade="all">
+				<key column="ADDRESS_ID" />
+				<one-to-many class="School" />
+			</set>
+		</component>
+	</class>
+
+</hibernate-mapping>

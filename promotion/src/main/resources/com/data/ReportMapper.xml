@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.data.ReportMapper">
+
+	<select id="getEnrolledCust" resultType="Report">
+		select
+			id as userId,
+			email,
+			vld_strt_tms as start,
+			vld_end_tms as end,
+			pnt_avail as point
+		from user_detail, user_slctd_promos
+		where id = user_logon_row_id
+	</select>
+	
+	<select id="getEnrollingCust" resultType="Report">
+		select
+			id as userId,
+			email,
+			vld_strt_tms as start,
+			vld_end_tms as end,
+			pnt_avail as point
+		from user_detail, user_slctd_promos
+		where id = user_logon_row_id and current date between vld_strt_tms and vld_end_tms
+	</select>
+
+	<select id="getEligibleCust" resultType="Report">
+		select
+			id as userId,
+			email,
+			vld_strt_tms as start,
+			vld_end_tms as end,
+			pnt_avail as point
+		from user_detail, user_slctd_promos
+		where id = user_logon_row_id and pnt_avail &gt;= 3
+	</select>
+
+	<select id="getIneligibleCust" resultType="Report">
+		select
+			id as userId,
+			email,
+			vld_strt_tms as start,
+			vld_end_tms as end,
+			pnt_avail as point
+		from user_detail, user_slctd_promos
+		where id = user_logon_row_id and current date between vld_strt_tms and vld_end_tms and pnt_avail &lt; 3
+	</select>
+	
+	<select id="getAwardedCust" resultType="Report">
+		select
+			id as userId,
+			email,
+			vld_strt_tms as start,
+			vld_end_tms as end,
+			pnt_avail as point
+		from user_detail, user_slctd_promos as usp, promo_rwrd as pr
+		where id = user_logon_row_id and usp.user_slctd_promos_row_id = pr.user_slctd_promos_row_id
+	</select>
+	
+	<select id="getRedeemedCust" resultType="Report">
+		select
+			id as userId,
+			email,
+			vld_strt_tms as start,
+			vld_end_tms as end,
+			pnt_avail as point,
+			rwrd_dt as rewardDate
+		from user_detail, user_slctd_promos as usp, promo_rwrd as pr
+		where id = user_logon_row_id and rwrd_dt is not null and
+			usp.user_slctd_promos_row_id = pr.user_slctd_promos_row_id
+	</select>
+	
+	<select id="getTodayRedeemedCust" resultType="Report">
+		select
+			id as userId,
+			user_name as userName,
+			first_nm as firstName,
+			last_nm as lastName,
+			email,
+			vld_strt_tms as start,
+			vld_end_tms as end,
+			pnt_avail as point,
+			rwrd_dt as rewardDate
+		from user_detail, user_slctd_promos as usp, promo_rwrd as pr
+		where id = user_logon_row_id and rwrd_dt &gt; (current date - 1 day) and
+			usp.user_slctd_promos_row_id = pr.user_slctd_promos_row_id
+	</select>
+</mapper>

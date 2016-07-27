@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd"> 
+<tiles-definitions> 
+
+    <definition name="homepage1" template="/layouts/classic.jsp">
+	    <put-attribute name="title" value="Tiles Homepage" />
+	    <put-attribute name="header" value="/layouts/header.jsp" />
+	    <put-attribute name="menu" value="/layouts/menu.jsp" />
+	    <put-attribute name="body" value="/layouts/body1.jsp" />
+	    <put-attribute name="footer" value="/layouts/footer.jsp" />
+	</definition>
+
+	<definition name="homepage2" template="/layouts/classic.jsp">
+	    <put-attribute name="title" value="Tiles Homepage 2" />
+	    <put-attribute name="header" value="/layouts/header.jsp" />
+	    <put-attribute name="menu" value="/layouts/menu.jsp" />
+	    <put-attribute name="body" value="/layouts/body2.jsp" />
+	    <put-attribute name="footer" value="/layouts/footer.jsp" />
+	</definition>
+
+	<definition name="uploadResult" template="/layouts/classic.jsp">
+	    <put-attribute name="title" value="Upload Result Page" />
+	    <put-attribute name="header" value="/layouts/header.jsp" />
+	    <put-attribute name="menu" value="/layouts/menu.jsp" />
+	    <put-attribute name="body" value="/layouts/result.jsp" />
+	    <put-attribute name="footer" value="/layouts/footer.jsp" />
+	</definition>
+
+	<definition name="promotion" template="/layouts/classic.jsp">
+	    <put-attribute name="title" value="Promotion Program Analysis Report" />
+	    <put-attribute name="header" value="/layouts/promoHeader.jsp" />
+	    <put-attribute name="menu" value="/layouts/promoMenu.jsp" />
+	    <put-attribute name="body" value="/layouts/promoProgBrief.jsp" />
+	    <put-attribute name="footer" value="/layouts/footer.jsp" />
+	</definition>
+</tiles-definitions>

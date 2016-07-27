@@ -1,0 +1,72 @@
+.page-header {
+	padding-left: 10px;
+	background: #1f1f1f;
+	padding: 1px;
+	margin: 0;
+	color: #FFF;
+}
+.page-header h1 {
+	margin: 20px;
+	font-size: 25px;
+	color: #428bca;
+	font-weight: bold;
+}
+.title {
+	margin: 0;
+	padding: 10px 20px;
+	font-size: 22px;
+	background: #f1f1f1;
+}
+.oneline {
+	line-height: 40px;
+}
+
+.tiles-page-body {
+	margin-top: 15px;
+	padding: 0 10px;
+}
+
+.tiles-page-body #uploadaction label {
+	color: #000;
+	font-size: 100%;
+}
+
+.tiles-page-body .panel span {
+	font-size: large;
+	font-weight: bold;
+	color: rgb(4, 0, 178);
+}
+
+.cover {
+	height: 100%;
+	position: absolute;
+	width: 100%;
+	z-index: 2147483646;
+}
+
+
+.bs-callout {
+	padding:20px;
+	margin:20px 0;
+	border:1px solid #eee;
+	border-left-width:5px;
+	border-radius:3px;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.bs-callout-info {
+	border-left-color:#428bca;
+}
+.bs-callout-info h4 {
+	color:#5bc0de;
+}
+.bs-callout-info p {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.form-control {
+	width: auto;
+	display: inline;
+	vertical-align:middle;
+}

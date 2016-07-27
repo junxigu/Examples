@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.guerer.example.arrayAttr">
+
+	<class name="Person" table="PERSON">
+		<id name="id" column="PERSON_ID">
+			<generator class="increment" />
+		</id>
+		<property name="name" />
+		<property name="age" />
+		<array name="schools" table="SCHOOL">
+			<key column="PERSON_ID" not-null="true" />
+			<list-index column="LIST_ORDER" />
+			<element column="SCHOOL" type="string" />
+		</array>
+	</class>
+
+</hibernate-mapping>

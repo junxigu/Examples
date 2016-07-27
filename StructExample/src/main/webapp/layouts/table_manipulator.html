@@ -1,0 +1,54 @@
+<div class="TableControls">
+
+  <form class="form-inline">
+    <div class="form-group">
+      <label class="sr-only" for="selectVersion"> Select Copy Version: </label>
+      <select class="form-control" id="selectVersion">
+        <option value=''> Select Copy Version </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="searchDTT"> Search: </label>
+      <input type="text" class="form-control" id="searchDTT" placeholder="Text for Search">
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"> Filter and Search
+      </label>
+    </div>
+    <button type="submit" class="btn btn-default">Filter</button>
+  </form>
+
+
+  <form class="form-inline" role="form">
+
+    <!-- 	Note: After JS implementation selection should have property disabled="disabled"
+    until a previous rows selection is made in an effort to ensure filtering and avoid error -->
+
+    <div class="form-group">
+      <label for="serviceMerchantIdTd" class="col-sm-2 control-label"> Filter By Copy Version: </label>
+      <div class="col-sm-10">
+        <select class="serviceMerchantIdTd">
+          <option value=''>
+            Select a Version
+          </option>
+        </select>
+      </div>
+    </div>
+    <!-- form-group -->
+  </form>
+
+  <div class="paginationSelector">
+    <ul class="pagination">
+      <li><a href="#">&laquo;</a></li>
+      <li class="active"><a href="#">1</a></li>
+      <li class="disabled"><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li><a href="#">&raquo;</a></li>
+    </ul>
+  </div>
+  <!-- paginationSelector -->
+
+<div>

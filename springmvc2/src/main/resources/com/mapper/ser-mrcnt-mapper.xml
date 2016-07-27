@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ServiceMerchantMppr">
+
+	<select id="getServiceMerchantIds" resultType="int">
+		select SRVNG_MRCNT_ID as id
+		from DB2INST1.SRV_MRCNT
+	</select>
+	
+	<select id="getServiceMerchant" resultType="com.domain.ServiceMerchant">
+		select SRVNG_MRCNT_ID
+		as id,
+		MRCNT_NM_1_TXT as name1, MRCNT_NM_2_TXT as name2,
+		ADDR_1_TXT as address1, ADDR_2_TXT as address2,
+		CTY_NM as city, ST_NM as state, PSTL_CD as postalCode,
+		BUS_PHNE_TXT as businessPhone
+		from DB2INST1.SRV_MRCNT
+	</select>
+
+	<insert id="insertServiceMerchant">
+		insert into DB2INST1.SRV_MRCNT
+		(MRCNT_NM_1_TXT,
+		MRCNT_NM_2_TXT, ADDR_1_TXT, ADDR_2_TXT,
+		CTY_NM, ST_NM, PSTL_CD,
+		BUS_PHNE_TXT)
+		values (#{name1}, #{name2}, #{address1},
+		#{address2},
+		#{city}, #{state}, #{postalCode}, #{businessPhone})
+	</insert>
+
+	<delete id="deleteServiceMerchant">
+		delete from DB2INST1.SRV_MRCNT where SRVNG_MRCNT_ID =
+		#{0}
+	</delete>
+	
+	<update id="updateServiceMerchant">
+		update DB2INST1.SRV_MRCNT
+		<set>
+			<if test="name1 != null">MRCNT_NM_1_TXT=#{name1},</if>
+			<if test="name2 != null">MRCNT_NM_2_TXT=#{name2},</if>
+			<if test="address1 != null">ADDR_1_TXT=#{address1},</if>
+			<if test="address2 != null">ADDR_2_TXT=#{address2},</if>
+			<if test="city != null">CTY_NM=#{city},</if>
+			<if test="state != null">ST_NM=#{state},</if>
+			<if test="postalCode != null">PSTL_CD=#{postalCode},</if>
+			<if test="businessPhone != null">BUS_PHNE_TXT=#{businessPhone}</if>
+		</set> 
+		where SRVNG_MRCNT_ID = #{id}
+	</update>
+
+</mapper>

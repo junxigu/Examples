@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+
+		<!-- Database connection settings -->
+		<property name="connection.driver_class">org.h2.Driver</property>
+		<property name="connection.url">jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE</property>
+		<property name="connection.username">sa</property>
+		<property name="connection.password" />
+
+		<!-- JDBC connection pool (use the built-in) -->
+		<property name="connection.pool_size">1</property>
+
+		<!-- SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.H2Dialect</property>
+
+		<!-- Disable the second-level cache -->
+		<property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+
+		<!-- Drop and re-create the database schema on startup -->
+		<property name="hbm2ddl.auto">update</property>
+
+		<!-- <mapping resource="org/guerer/example/News.hbm.xml"/> -->
+		<!-- <mapping resource="org/guerer/example/formulaAttr/News.hbm.xml"/> -->
+		<!-- <mapping resource="org/guerer/example/listAttr/Person.hbm.xml"/> -->
+		<!-- <mapping resource="org/guerer/example/arrayAttr/Person.hbm.xml"/> -->
+		<!-- <mapping resource="org/guerer/example/setAttr/Person.hbm.xml"/> -->
+		<!-- <mapping resource="org/guerer/example/collAttr/Person.hbm.xml"/> -->
+		<!-- <mapping resource="org/guerer/example/mapAttr/Person.hbm.xml"/> -->
+		<!-- <mapping resource="org/guerer/example/DataObject.hbm.xml"/> -->
+		<!-- <mapping resource="org/guerer/example/compAttr/Person.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/compMapAttr/Person.hbm.xml" 
+			/> -->
+		<!-- <mapping resource="org/guerer/example/mapCompAttr/Person.hbm.xml" 
+			/> -->
+		<!-- <mapping resource="org/guerer/example/mapKeyCompAttr/Person.hbm.xml" 
+			/> -->
+		<!-- <mapping resource="org/guerer/example/compIdAttr/Person.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/unitedIdAttr/Person.hbm.xml" 
+			/> -->
+		<!-- <mapping class="org.guerer.example.annotation.Person" /> -->
+		<!-- <mapping resource="org/guerer/example/nToOne/Address.hbm.xml" /> <mapping 
+			resource="org/guerer/example/nToOne/Person.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/nToOneTable/Address.hbm.xml" 
+			/> <mapping resource="org/guerer/example/nToOneTable/Person.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/oneToOne/Address.hbm.xml" /> 
+			<mapping resource="org/guerer/example/oneToOne/Person.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/oneToOneTable/Address.hbm.xml" 
+			/> <mapping resource="org/guerer/example/oneToOneTable/Person.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/oneToOnePriKey/Address.hbm.xml" 
+			/> <mapping resource="org/guerer/example/oneToOnePriKey/Person.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/oneToN/Address.hbm.xml" /> <mapping 
+			resource="org/guerer/example/oneToN/Person.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/oneToNTable/Address.hbm.xml" 
+			/> <mapping resource="org/guerer/example/oneToNTable/Person.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/NToN/Address.hbm.xml" /> <mapping 
+			resource="org/guerer/example/NToN/Person.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/bidirecOneToN/Address.hbm.xml" 
+			/> <mapping resource="org/guerer/example/bidirecOneToN/Person.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/bidirecOneToNTable/Address.hbm.xml" 
+			/> <mapping resource="org/guerer/example/bidirecOneToNTable/Person.hbm.xml" 
+			/> -->
+		<!-- <mapping resource="org/guerer/example/bidrecNToN/Address.hbm.xml" 
+			/> <mapping resource="org/guerer/example/bidrecNToN/Person.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/bidrecOneToOne/Address.hbm.xml" 
+			/> <mapping resource="org/guerer/example/bidrecOneToOne/Person.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/bidrecOneToOnePriKey/Address.hbm.xml" 
+			/> <mapping resource="org/guerer/example/bidrecOneToOnePriKey/Person.hbm.xml" 
+			/> -->
+		<!-- <mapping resource="org/guerer/example/bidirecOneToOneTable/Address.hbm.xml" 
+			/> <mapping resource="org/guerer/example/bidirecOneToOneTable/Person.hbm.xml" 
+			/> -->
+		<!-- <mapping resource="org/guerer/example/compOneToN/Person.hbm.xml" /> 
+			<mapping resource="org/guerer/example/compOneToN/School.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/compIdBidirecOneToN/Person.hbm.xml" 
+			/> <mapping resource="org/guerer/example/compIdBidirecOneToN/Address.hbm.xml" 
+			/> -->
+		<!-- <mapping resource="org/guerer/example/compEntityId/Order.hbm.xml" 
+			/> <mapping resource="org/guerer/example/compEntityId/OrderItem.hbm.xml" 
+			/> <mapping resource="org/guerer/example/compEntityId/Product.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/subclass/Person.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/joinedSubclass/Person.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/unionSubclass/Person.hbm.xml" /> -->
+		<!-- <mapping resource="org/guerer/example/batch/News.hbm.xml" /> -->
+	</session-factory>
+
+</hibernate-configuration>

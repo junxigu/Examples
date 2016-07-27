@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.CountryCodeMppr">
+
+	<select id="getCountryCodes" resultType="com.domain.CountryCode">
+		select CNTRY_CD_SK
+		as id,
+		REGION_CD as regionCode, CNTRY_CD as countryCode,
+		CNTRY_DESC as countryDescription, CRNCY_DESC as crncyDescription, 
+		CREAT_TMS as creationTime 
+		from DB2INST1.CNTRY_CD
+	</select>
+	
+</mapper>

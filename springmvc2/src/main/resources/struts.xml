@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+
+	<package name="exxon" extends="struts-default">
+
+		<default-action-ref name="index" />
+
+		<action name="index">
+			<result>uploadFile.jsp</result>
+		</action>
+
+		<action name="merchantToken">
+			<result>index.jsp</result>
+		</action>
+
+		<action name="uploadaction" class="com.action.UploadAction" method="upload">
+
+			<!-- configure an interceptors -->
+			<interceptor-ref name="fileUpload">
+
+				<!-- configure the types of files to upload -->
+				<param name="allowedTypes">
+					<!-- image/bmp,image/png,image/gif,image/jpeg,image/jpg,application/msword,text/plain, -->
+					application/octet-stream,application/vnd.ms-excel
+				</param>
+
+				<!-- configure the size of files to upload -->
+				<param name="maximumSize">100000000</param>
+
+			</interceptor-ref>
+
+			<interceptor-ref name="defaultStack" />
+
+			<result name="success">UploadSuccess.jsp</result>
+			<result name="input">uploadFile.jsp</result>
+
+		</action>
+
+	</package>
+
+	<package name="serviceMerchantTokens" extends="json-default"
+		namespace="/serviceMerchantTokens">
+
+		<global-results>
+			<result name="success" type="json">
+				<param name="noCache">true</param>
+				<param name="contentType">text/html</param>
+				<param name="root">merchantToken</param>
+			</result>
+
+			<result name="error" type="json">
+				<param name="noCache">true</param>
+				<param name="contentType">text/html</param>
+				<param name="root">errorMsg</param>
+			</result>
+		</global-results>
+		<!-- <global-exception-mappings> <exception-mapping result="error" exception="java.lang.Exception"></exception-mapping> 
+			</global-exception-mappings> -->
+
+		<action name="fetch" class="com.action.ServiceMerchantTokenOprAction"
+			method="fetch">
+			<result name="success" type="json">
+				<param name="noCache">true</param>
+				<param name="contentType">text/html</param>
+				<param name="root">merchantTokens</param>
+			</result>
+		</action>
+
+		<action name="merchants" class="com.action.ServiceMerchantTokenOprAction"
+			method="fetchMerchants">
+			<result name="success" type="json">
+				<param name="noCache">true</param>
+				<param name="contentType">text/html</param>
+				<param name="root">merchants</param>
+			</result>
+		</action>
+
+		<action name="countryCodes" class="com.action.ServiceMerchantTokenOprAction"
+			method="fetchCountryCodes">
+			<result name="success" type="json">
+				<param name="noCache">true</param>
+				<param name="contentType">text/html</param>
+				<param name="root">countryCodes</param>
+			</result>
+		</action>
+
+		<action name="insert" class="com.action.ServiceMerchantTokenOprAction"
+			method="insert">
+		</action>
+
+		<action name="update" class="com.action.ServiceMerchantTokenOprAction"
+			method="update">
+		</action>
+
+		<action name="delete" class="com.action.ServiceMerchantTokenOprAction"
+			method="delete">
+		</action>
+
+	</package>
+</struts>

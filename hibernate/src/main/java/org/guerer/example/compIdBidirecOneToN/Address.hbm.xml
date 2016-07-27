@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.guerer.example.compIdBidirecOneToN">
+
+	<class name="Address" table="ADDRESS">
+		<id name="id" column="ADDRESS_ID">
+			<generator class="increment" />
+		</id>
+		<property name="detail" />
+		<many-to-one name="person" cascade="all" not-null="true">
+			<column name="first" />
+			<column name="last" />
+		</many-to-one>
+	</class>
+
+</hibernate-mapping>

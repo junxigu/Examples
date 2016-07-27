@@ -1,0 +1,34 @@
+/* Dashboard div */
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	
+	background-color: rgba(42, 111, 45, 0.14);
+	
+	header {
+		text-align: center;
+		text-transform: uppercase;
+		font: bold 2em monospace;
+		background-color: rgb(12, 39, 5);
+		color: white;
+		padding: 5px;
+	}
+	
+	.primaryButton, .secondaryButton {
+		font: 1em cursive;
+		height: 40px;
+		margin: 10px auto;
+	}
+	
+	.primaryButton {
+		background-color: rgb(1, 116, 94);
+		color: white;
+	}
+	
+	.secondaryButton {
+		background-color: gray;
+	}
+}

@@ -1,0 +1,34 @@
+{
+  "Dashboard.header": "设置",
+  "Dashboard.button.startGame": "开始游戏",
+  
+  "Ingame.header": "游戏中",
+  "Ingame.button.start": "开始",
+  "Ingame.button.restart": "重新开始",
+  "Ingame.button.setting": "设置",
+  
+  "RoleConfiguration.title": "角色设置",
+  "RoleConfiguration.select.common": "平民",
+  "RoleConfiguration.select.undercover": "卧底",
+  "RoleConfiguration.select.whiteBoard": "白板",
+  "RoleConfiguration.alert": "平民要比卧底和白板的总数要多",
+
+  "Player.prefix": "玩家",
+  "Player.button.word": "词语",
+  "Player.button.wordAgain": "重看",
+  "Player.button.kill": "杀死",
+  
+  "LexiconConfiguration.input.specifiedCommon": "平民",
+  "LexiconConfiguration.input.specifiedUndercover": "卧底",
+  "LexiconConfiguration.title": "设置词库",
+  "LexiconConfiguration.radio.random": "随机",
+  "LexiconConfiguration.radio.specified": "定制",
+  
+  "GameController.alert.common": "平民获胜!",
+  "GameController.alert.undercover": "卧底获胜!",
+  "GameController.alert.whiteBoard": "白板获胜!",
+  
+  "Player.confirm": "确定杀死这个玩家？",
+  
+  "blank" : ""
+}

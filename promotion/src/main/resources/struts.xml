@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+
+	<!-- <package name="basicstruts2" extends="struts-default"> -->
+
+	<!-- <action name="index"> -->
+	<!-- <result>/index.jsp</result> -->
+	<!-- </action> -->
+
+	<!-- </package> -->
+
+	<package name="exxon" extends="struts-default,tiles-default">
+
+		<default-action-ref name="promotion" />
+
+<!-- 		<action name="defalt"> -->
+<!-- 			<result type="tiles">homepage1</result> -->
+<!-- 		</action> -->
+
+		<action name="homepage">
+			<result type="tiles">homepage1</result>
+		</action>
+
+		<action name="promotion" class="com.actions.PromoAction"
+			method="excute">
+			<result name="success" type="tiles">promotion</result>
+		</action>
+
+		<action name="downloadFile" class="com.actions.PromoAction"
+			method="download">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+
+		<action name="uploadaction" class="com.actions.UploadAction"
+			method="upload">
+
+			<!-- configure an interceptors -->
+			<interceptor-ref name="fileUpload">
+
+				<!-- configure the types of files to upload -->
+				<param name="allowedTypes">
+					image/bmp,image/png,image/gif,image/jpeg,image/jpg,application/msword,text/plain,application/octet-stream
+				</param>
+
+				<!-- configure the size of files to upload -->
+				<param name="maximumSize">2000000000</param>
+
+			</interceptor-ref>
+
+			<interceptor-ref name="defaultStack" />
+
+			<result name="success">/UploadSuccess.jsp</result>
+
+		</action>
+
+		<action name="homepage2">
+			<result type="tiles">homepage2</result>
+		</action>
+
+	</package>
+</struts>

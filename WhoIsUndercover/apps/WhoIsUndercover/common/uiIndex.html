@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index</title>
+<!-- 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"> -->
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+
+<!-- twitter bootstrap -->
+<link rel="stylesheet" type="text/css"
+	href="css/bootstrap/css/bootstrap.min.css" />
+
+<!-- jquery mobile -->
+<!-- <link rel="stylesheet" title="default" type="text/css" -->
+<!-- 	href="css/jquerymobile/jquery.mobile.structure.min.css" /> -->
+<link rel="stylesheet" title="default" type="text/css"
+	href="css/jquerymobile/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="css/jquerymobile/jquery.mobile.icons.min.css" />
+
+<link rel="stylesheet" title="default" type="text/css"
+	href="css/slick/slick.css" />
+<link rel="stylesheet" title="default" type="text/css"
+	href="css/slick/slick-theme.css" />
+	
+<link rel="stylesheet" href="css/style.css">
+
+<script src="js/lib/jquery.js"></script>
+<script src="js/lib/jquery.mobile.js"></script>
+<script src="js/lib/bootstrap.js"></script>
+<script src="js/lib/slick.js"></script>
+
+<script>
+	$(document).on('pageshow', function(){
+		$('.slick').slick({
+          arrows: false,
+          infinite: false,
+          dots: false,
+          touchThreshold: 10,
+          speed: 200,
+        });
+	});
+</script>
+</head>
+<body>
+	<div data-role="page">
+		<a href="pages/dashboard.html">showRole</a>
+	</div>
+</body>
+</html>

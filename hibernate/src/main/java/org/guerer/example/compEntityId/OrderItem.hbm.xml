@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.guerer.example.compEntityId">
+
+	<class name="OrderItem" table="ORDER_ITEM">
+		<composite-id>
+			<key-many-to-one name="order" column="ORDER_ID" />
+			<key-many-to-one name="product" column="PRODUCT_ID" />
+			<key-property name="count" />
+		</composite-id>
+	</class>
+
+</hibernate-mapping>

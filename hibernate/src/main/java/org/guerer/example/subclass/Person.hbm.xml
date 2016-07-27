@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.guerer.example.subclass">
+
+	<class name="Person" table="PERSON" discriminator-value="person">
+		<id name="id" column="PERSON_ID">
+			<generator class="increment" />
+		</id>
+		<discriminator column="DISCRIMINATOR" type="string" />
+		<property name="name" />
+		<component name="address">
+			<property name="detail" />
+		</component>
+		<subclass name="Customer" discriminator-value="customer">
+			<property name="comments" />
+			<many-to-one column="EMPLOYEE_ID" name="employee" />
+		</subclass>
+		<subclass name="Employee" discriminator-value="employee">
+			<property name="title" />
+			<set name="customers" inverse="true">
+				<key column="EMPLOYEE_ID" />
+				<one-to-many class="Customer" />
+			</set>
+			<many-to-one name="manager" column="MANAGER_ID" />
+
+			<subclass name="Manager" discriminator-value="manager">
+				<property name="department" />
+				<set name="employees" inverse="true">
+					<key column="MANAGER_ID" />
+					<one-to-many class="Employee" />
+				</set>
+			</subclass>
+		</subclass>
+	</class>
+
+</hibernate-mapping>

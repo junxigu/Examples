@@ -1,0 +1,2 @@
+# use the following command to generate java files in target package
+xjc expenseReport.xsd -d ../java/ -p guerer.example.dto

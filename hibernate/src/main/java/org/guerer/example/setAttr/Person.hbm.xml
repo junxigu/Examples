@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.guerer.example.setAttr">
+
+	<class name="Person" table="PERSON">
+		<id name="id" column="PERSON_ID">
+			<generator class="increment" />
+		</id>
+		<property name="name" />
+		<property name="age" />
+		<set name="schools" table="SCHOOL">
+			<key column="PERSON_ID" not-null="true" />
+			<element column="SCHOOL" type="string" not-null="true" />
+		</set>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.ServiceMerchantTokenMppr">
+
+	<select id="getServiceMerchantToken" resultType="com.domain.ServiceMerchantToken">
+		select SRVNG_MRCNT_TKN_SK
+		as id,
+		SRVNG_MRCNT_ID as serviceMerchantId, CNTRY_CD_SK as countryCode,
+		MRCNT_ALIAS_NM as alias, MRCNT_PSWD as password, SYS_ID as systemId,
+		PRTNR_ID as partnerId, SRVNG_MRCNT_CERT_VAL as certificate, 
+		SRVNG_MRCNT_TKN_DESC as description, CREAT_TMS as creationTime,
+		UPDT_TMS as updateTime
+		from DB2INST1.SRV_MRCNT_TKN
+	</select>
+
+	<insert id="insertServiceMerchantToken" useGeneratedKeys="true" keyProperty="id">
+		insert into DB2INST1.SRV_MRCNT_TKN
+		(SRVNG_MRCNT_ID, CNTRY_CD_SK, MRCNT_ALIAS_NM, MRCNT_PSWD, SYS_ID, PRTNR_ID, 
+		SRVNG_MRCNT_CERT_VAL, SRVNG_MRCNT_TKN_DESC, CREAT_TMS)
+		values (#{serviceMerchantId}, #{countryCode}, #{alias}, #{password},
+		#{systemId}, #{partnerId}, #{certificate}, #{description}, #{creationTime})
+	</insert>
+
+	<delete id="deleteServiceMerchantToken">
+		delete from DB2INST1.SRV_MRCNT_TKN where SRVNG_MRCNT_TKN_SK =
+		#{0}
+	</delete>
+	
+	<update id="updateServiceMerchantToken">
+		update DB2INST1.SRV_MRCNT_TKN
+		<set>
+			<if test="serviceMerchantId != null">SRVNG_MRCNT_ID=#{serviceMerchantId},</if>
+			<if test="countryCode !=null">CNTRY_CD_SK=#{countryCode},</if>
+			<if test="alias != null">MRCNT_ALIAS_NM=#{alias},</if>
+			<if test="password != null">MRCNT_PSWD=#{password},</if>
+			<if test="systemId != null">SYS_ID=#{systemId},</if>
+			<if test="partnerId != null">PRTNR_ID=#{partnerId},</if>
+			<if test="certificate != null">SRVNG_MRCNT_CERT_VAL=#{certificate},</if>
+			<if test="description != null">SRVNG_MRCNT_TKN_DESC=#{description},</if>
+			<if test="updateTime != null">UPDT_TMS=#{updateTime}</if>
+		</set>
+		where SRVNG_MRCNT_TKN_SK = #{id}
+	</update>
+
+</mapper>

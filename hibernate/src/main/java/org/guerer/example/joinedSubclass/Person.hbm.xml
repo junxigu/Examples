@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.guerer.example.joinedSubclass">
+
+	<class name="Person" table="PERSON">
+		<id name="id" column="PERSON_ID">
+			<generator class="increment" />
+		</id>
+		<property name="name" />
+		<component name="address">
+			<property name="detail" />
+		</component>
+	</class>
+
+	<joined-subclass name="Customer" extends="Person">
+		<key column="CUSTOMER_ID" />
+		<property name="comments" />
+		<many-to-one column="EMPLOYEE_ID" name="employee" />
+	</joined-subclass>
+
+	<joined-subclass name="Employee" extends="Person">
+		<key column="EMPLOYEE_ID" />
+		<property name="title" not-null="true" />
+		<set name="customers" inverse="true">
+			<key column="EMPLOYEE_ID" />
+			<one-to-many class="Customer" />
+		</set>
+		<many-to-one name="manager" column="MANAGER_ID" />
+
+		<joined-subclass name="Manager">
+			<key column="MANAGER_ID" />
+			<property name="department" />
+			<set name="employees" inverse="true">
+				<key column="MANAGER_ID" />
+				<one-to-many class="Employee" />
+			</set>
+		</joined-subclass>
+	</joined-subclass>
+</hibernate-mapping>

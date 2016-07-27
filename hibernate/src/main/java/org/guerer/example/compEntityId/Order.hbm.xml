@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.guerer.example.compEntityId">
+
+	<class name="Order" table="ORDER">
+		<id name="id" column="ORDER_ID">
+			<generator class="increment" />
+		</id>
+		<set name="items" inverse="true" table="ORDER_ITEM">
+			<key column="ORDER_ID" />
+			<one-to-many class="OrderItem" />
+		</set>
+	</class>
+
+</hibernate-mapping>

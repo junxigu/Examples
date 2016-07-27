@@ -1,0 +1,46 @@
+/* Ingame div */
+#ingame {
+
+	li {
+		span.instruction {
+			font-size: 1.5em;
+		}
+		
+		span.instruction.second {
+			margin-left: 2em;
+		}
+		
+		.glyphicon {
+			border: solid;
+			padding: 2px;
+			border-radius: 50%;
+		}
+	}
+	
+	li.ui-li-static {
+		.glyphicon-remove {
+			float: right;
+		}
+		
+		.glyphicon-eye-open {
+			margin-right: 10px;
+		}
+		
+		.player {
+			font-weight: bold;
+			line-height: 1.7em;
+			margin-right: 10px;
+		}
+		
+		.role {
+			border: solid;
+			border-radius: 50%;
+			padding: 2px;
+		}
+		
+		.role.undercover {
+			color: red;
+			border-color: red;
+		}
+	}
+}

@@ -1,0 +1,45 @@
+.header, .menu, .promotion, .footer{
+	position: absolute;
+}
+
+.header, .footer{
+	text-align: center;
+}
+
+.header{
+	margin: 0;
+	padding: 0;
+	top: 0;
+	left: 0;
+	background: rgb(232, 232, 218);
+	width: 100%;
+	height: 10%;
+}
+
+.menu{
+	font-size: 10px;
+	width: 20%;
+	left: 0;
+	top: 10%;
+	height: 80%;
+	background: rgb(249, 249, 238);
+}
+
+.promotion{
+	width: 80%;
+	top: 10%;
+	background: rgb(255, 255, 255);
+	height: 100%;
+	right: 0;
+	padding: 10px;
+}
+
+.footer{
+	width: 100%;
+	height: 80px;
+	background: #EEE9EF;
+	align-content: center;
+	margin: 0;
+	left: 0;
+	top: 90%;
+}

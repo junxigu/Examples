@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.guerer.example.bidirecOneToOneTable">
+
+	<class name="Address" table="ADDRESS">
+		<id name="id" column="ADDRESS_ID">
+			<generator class="increment" />
+		</id>
+		<property name="detail" />
+		<join table="PERSON_ADDRESS" optional="true">
+			<key column="ADDRESS_ID" unique="true" />
+			<many-to-one name="person" column="PERSON_ID" unique="true"
+				not-null="true" />
+		</join>
+	</class>
+
+</hibernate-mapping>

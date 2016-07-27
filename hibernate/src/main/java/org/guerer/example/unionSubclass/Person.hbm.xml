@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.guerer.example.unionSubclass">
+
+	<class name="Person" table="PERSON">
+		<id name="id" column="PERSON_ID">
+			<generator class="increment" />
+		</id>
+		<property name="name" />
+		<component name="address">
+			<property name="detail" />
+		</component>
+	</class>
+
+	<union-subclass name="Customer" extends="Person" table="CUSTOMER">
+		<property name="comments" />
+		<many-to-one column="EMPLOYEE_ID" name="employee" />
+	</union-subclass>
+
+	<union-subclass name="Employee" extends="Person"  table="EMPLOYEE">
+		<property name="title" not-null="true" />
+		<set name="customers" inverse="true">
+			<key column="EMPLOYEE_ID" />
+			<one-to-many class="Customer" />
+		</set>
+		<many-to-one name="manager" column="MANAGER_ID" />
+
+		<union-subclass name="Manager"  table="MANAGER">
+			<property name="department" />
+			<set name="employees" inverse="true">
+				<key column="MANAGER_ID" />
+				<one-to-many class="Employee" />
+			</set>
+		</union-subclass>
+	</union-subclass>
+</hibernate-mapping>

@@ -1,0 +1,9 @@
+.classpath
+.project
+.settings/
+target/
+/*.txt
+/*.dat
+/*.gz
+/*.out
+/*.zip

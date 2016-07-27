@@ -1,0 +1,34 @@
+{
+  "Dashboard.header": "Setting",
+  "Dashboard.button.startGame": "Start Game",
+  
+  "Ingame.header": "Playing",
+  "Ingame.button.start": "Start",
+  "Ingame.button.restart": "Restart",
+  "Ingame.button.setting": "Setting",
+  
+  "RoleConfiguration.title": "Role Setting",
+  "RoleConfiguration.select.common": "Common",
+  "RoleConfiguration.select.undercover": "Undercover",
+  "RoleConfiguration.select.whiteBoard": "WhiteBoard",
+  "RoleConfiguration.alert": "Common should be more then undercover and whiteBoard",
+
+  "Player.prefix": "Player",
+  "Player.button.word": "Word",
+  "Player.button.wordAgain": "Word Again",
+  "Player.button.kill": "Kill",
+  
+  "LexiconConfiguration.input.specifiedCommon": "Common",
+  "LexiconConfiguration.input.specifiedUndercover": "Undercover",
+  "LexiconConfiguration.title": "Lexicon Setting",
+  "LexiconConfiguration.radio.random": "Random",
+  "LexiconConfiguration.radio.specified": "Specified",
+  
+  "GameController.alert.common": "Commons Win!",
+  "GameController.alert.undercover": "Undercovers Win!",
+  "GameController.alert.whiteBoard": "WhiteBoards Win!",
+  
+  "Player.confirm": "Kill This Player?",
+  
+  "%earn.earnMain.pay" : "Pay"
+}

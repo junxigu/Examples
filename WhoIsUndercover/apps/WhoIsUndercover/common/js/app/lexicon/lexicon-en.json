@@ -1,0 +1,11 @@
+{
+  "Drinks": [
+    ["xianzengduo", "guolicheng"], 
+    ["beer", "wine"]
+  ],
+   
+  "Food": [
+    ["bread", "cake"],
+    ["apple", "orange"]
+  ]
+}

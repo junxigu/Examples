@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="JPAExample" transaction-type="RESOURCE_LOCAL">
+
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+		<!-- <class>org.guerer.example.Person</class> -->
+		<!-- <class>org.guerer.example.transientEx.Person</class> -->
+		<!-- <class>org.guerer.example.enumerted.Person</class> -->
+		<!-- <class>org.guerer.example.lob.Person</class> -->
+		<!-- <class>org.guerer.example.temporal.Person</class> -->
+		<!-- <class>org.guerer.example.secondary.Person</class> -->
+		<!-- <class>org.guerer.example.compAttr.Person</class> -->
+		<!-- <class>org.guerer.example.compIdAttr.Person</class> -->
+
+		<!-- <class>org.guerer.example.nToOne.Person</class> -->
+		<!-- <class>org.guerer.example.nToOne.Address</class> -->
+
+		<!-- <class>org.guerer.example.oneToOne.Person</class> -->
+		<!-- <class>org.guerer.example.oneToOne.Address</class> -->
+
+		<!-- <class>org.guerer.example.oneToN.Person</class> -->
+		<!-- <class>org.guerer.example.oneToN.Address</class> -->
+
+		<!-- <class>org.guerer.example.nToN.Person</class> -->
+		<!-- <class>org.guerer.example.nToN.Address</class> -->
+
+		<!-- <class>org.guerer.example.bidirecOneToOne.Person</class> -->
+		<!-- <class>org.guerer.example.bidirecOneToOne.Address</class> -->
+
+		<!-- <class>org.guerer.example.bidirecOneToN.Person</class> -->
+		<!-- <class>org.guerer.example.bidirecOneToN.Address</class> -->
+
+		<!-- <class>org.guerer.example.bidirecNToN.Person</class> -->
+		<!-- <class>org.guerer.example.bidirecNToN.Address</class> -->
+
+		<!-- <class>org.guerer.example.bidirecOneToNMapAtti.Person</class> -->
+		<!-- <class>org.guerer.example.bidirecOneToNMapAtti.Address</class> -->
+
+		<!-- <class>org.guerer.example.oneToNOrder.Person</class> -->
+		<!-- <class>org.guerer.example.oneToNOrder.Address</class> -->
+
+		<!-- <class>org.guerer.example.subclass.Person</class> -->
+		<!-- <class>org.guerer.example.subclass.Customer</class> -->
+		<!-- <class>org.guerer.example.subclass.Employee</class> -->
+		<!-- <class>org.guerer.example.subclass.Manager</class> -->
+
+		<!-- <class>org.guerer.example.joinedSubclass.Person</class> -->
+		<!-- <class>org.guerer.example.joinedSubclass.Customer</class> -->
+		<!-- <class>org.guerer.example.joinedSubclass.Employee</class> -->
+		<!-- <class>org.guerer.example.joinedSubclass.Manager</class> -->
+
+		<!-- <class>org.guerer.example.unionSubclass.Person</class> -->
+		<!-- <class>org.guerer.example.unionSubclass.Customer</class> -->
+		<!-- <class>org.guerer.example.unionSubclass.Employee</class> -->
+		<!-- <class>org.guerer.example.unionSubclass.Manager</class> -->
+
+		<!-- <class>org.guerer.example.abstractEntity.Person</class> -->
+		<!-- <class>org.guerer.example.abstractEntity.Customer</class> -->
+		<!-- <class>org.guerer.example.abstractEntity.Employee</class> -->
+
+		<!-- <class>org.guerer.example.notEntitySuper.Person</class> -->
+		<!-- <class>org.guerer.example.notEntitySuper.Customer</class> -->
+		<!-- <class>org.guerer.example.notEntitySuper.Employee</class> -->
+
+		<!-- <class>org.guerer.example.asscOvvr.Person</class> -->
+		<!-- <class>org.guerer.example.asscOvvr.Employee</class> -->
+		<!-- <class>org.guerer.example.asscOvvr.Address</class> -->
+
+		<!-- <class>org.guerer.example.entityLife.Person</class> -->
+
+		<!-- <class>org.guerer.example.entityLifeListner.Person</class> -->
+
+		<!-- <class>org.guerer.example.jpql.Person</class> -->
+
+		<!-- <class>org.guerer.example.nameedQuery.Person</class> -->
+		<!-- <class>org.guerer.example.nameedQuery.Address</class> -->
+
+		<properties>
+			<!-- Database connection settings -->
+			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE" />
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="javax.persistence.jdbc.password" value="" />
+
+			<!-- SQL dialect -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+
+			<!-- Echo all executed SQL to stdout -->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+
+			<!-- Drop and re-create the database schema on startup -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+
+			<!-- JDBC connection pool (use the built-in) -->
+			<property name="hibernate.connection.pool_size" value="1" />
+
+			<!-- Disable the second-level cache -->
+			<property name="cache.provider_class"
+				value="org.hibernate.cache.internal.NoCacheProvider" />
+		</properties>
+	</persistence-unit>
+</persistence>

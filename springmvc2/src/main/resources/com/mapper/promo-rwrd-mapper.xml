@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.PromoRwrdMppr">
+
+	<select id="getPromoRwrd" resultType="string">
+		select RWRD_CD as rwrdCd from DB2INST1.promo_rwrd
+	</select>
+	
+	<insert id="insertPromoRwrd">
+		insert into DB2INST1.promo_rwrd (user_slctd_promos_row_id,
+		RWRD_CD, RWRD_AMT, RWRD_SERIAL_NBR_TXT, CREAT_TMS)
+		values (#{userSelectedPromosId}, #{rwrdCd},
+		#{rwrdAmt}, #{rwrdSerial}, #{creatTms})
+	</insert>
+
+	<delete id="deletePromoRwrd">
+		delete from DB2INST1.promo_rwrd where PROMO_RWRD_ROW_ID = #{0}
+	</delete>
+	
+</mapper>

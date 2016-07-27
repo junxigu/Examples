@@ -1,0 +1,58 @@
+/* Dashboard div */
+#setting {
+	#roleSettings , #LexiconConfiguration {
+		> div:first-child {
+			font: bold 1.5em serif;
+		}
+		
+		> div, > form {
+			background-color: white;
+			margin: 2px 0;
+			padding: 10px;
+		}
+	}
+	
+	#roleSettings {
+		margin: 10px 0;
+		
+		> div {
+			select{
+				float: right;
+				min-width: 45px;
+			}
+		}
+	}
+	
+	#LexiconConfiguration {
+		form.lexiconType > div {
+			display: inline-block;
+			width: 50%;
+		}
+		
+		form.randomLexiconTypes > span {
+			display: inline-block;
+			margin: 10px 0;
+			width: 25%;
+		}
+		
+		form.specified {
+			div {
+				margin-bottom: 10px;
+				
+				input {
+					float: right;
+				}
+			}
+			
+			padding: 10px;
+		}
+	}
+	
+	.primaryButton {
+		width: 90%;
+		margin-left: 5%;
+		margin-right: 5%;
+		position: fixed;
+		bottom: 0px;
+	}
+}

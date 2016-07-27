@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.guerer.example.mapCompAttr">
+
+	<class name="Person" table="PERSON">
+		<id name="id" column="PERSON_ID">
+			<generator class="increment" />
+		</id>
+		<property name="age" />
+		<map name="nicks" table="NICKS">
+			<key column="PERSON_ID" not-null="true" />
+			<map-key column="PHASE" type="string" />
+			<composite-element class="Name">
+				<parent name="owner" />
+				<property name="first"></property>
+				<property name="last"></property>
+			</composite-element>
+		</map>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,51 @@
+/* Dashboard div */
+#inGame {
+	#players {
+		margin: 10px 0;
+		text-align: center;
+		
+		> div {
+			width: 30%;
+			float: left;
+			border-style: outset;
+			background-color: white;
+			min-height: 150px;
+			margin-left: 1%;
+			
+			> * {
+				line-height: 1.5;
+				display: block;
+				margin: 0em auto 1em auto;
+				width: 95%;
+				border: none;
+				border-radius: 8px;
+			}
+			
+			> input {
+				height: 40px;
+			}
+			
+			> input.killBtn {
+				background-color: #a34848;
+				color: white;
+			}
+			
+			> input.killBtn[disabled] {
+				background-color: #ABABAB;
+				color: white;
+			}
+		}
+	}
+	
+	#buttons {
+		position: fixed;
+		bottom: 5px;
+		width: 100%;
+		
+		.primaryButton, .secondaryButton {
+			width: 30%;
+			margin: 10px 1.5%;
+		}
+	
+	}
+}

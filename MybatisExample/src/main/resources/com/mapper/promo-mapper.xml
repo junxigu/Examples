@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="guerer.example.mapper.PromoMppr">
+
+  <select id="getPromo" resultType="guerer.example.domain.Promo">
+    select PROMO_ROW_ID
+    as id,
+    DISP_TXT_TRANS_ID as displayTextTranslationId, PROMO_NM as promoName,
+    VLD_STRT_DT as validStartDate, VLD_END_DT as validEndDate,
+    PROMO_THRSLD_AMT as promoThresholdAmount, PROMO_ALRT_CNT as promoAlertCount,
+    PROMO_STAT_IND as promoStatusIndicator, PROMO_SLCTN_IND as promoSelectionIndicator,
+    CREAT_TMS as creationTime, UPDT_TMS as updateTime
+    from DB2INST1.PROMOS
+  </select>
+
+  <select id="getPromoUsingTextId" resultType="guerer.example.domain.Promo">
+    select PROMO_ROW_ID
+    as id,
+    DISP_TXT_TRANS_ID as displayTextTranslationId, PROMO_NM as promoName,
+    VLD_STRT_DT as validStartDate, VLD_END_DT as validEndDate,
+    PROMO_THRSLD_AMT as promoThresholdAmount, PROMO_ALRT_CNT as promoAlertCount,
+    PROMO_STAT_IND as promoStatusIndicator, PROMO_SLCTN_IND as promoSelectionIndicator,
+    CREAT_TMS as creationTime, UPDT_TMS as updateTime
+    from DB2INST1.PROMOS
+    where DISP_TXT_TRANS_ID = #{displayTextTranslationId}
+  </select>
+
+  <insert id="insertPromo" useGeneratedKeys="true" keyProperty="id">
+    insert into DB2INST1.PROMOS
+    (DISP_TXT_TRANS_ID, PROMO_NM, VLD_STRT_DT, VLD_END_DT,
+    PROMO_THRSLD_AMT, PROMO_ALRT_CNT, PROMO_STAT_IND, PROMO_SLCTN_IND,
+    CREAT_TMS)
+    values (#{displayTextTranslationId}, #{promoName}, #{validStartDate}, #{validEndDate},
+    #{promoThresholdAmount}, #{promoAlertCount}, #{promoStatusIndicator}, #{promoSelectionIndicator},
+    #{creationTime})
+  </insert>
+
+  <delete id="deletePromo">
+    delete from DB2INST1.PROMOS where PROMO_ROW_ID =
+    #{id}
+  </delete>
+
+  <update id="updatePromo">
+    update DB2INST1.PROMOS
+    <set>
+      <if test="displayTextTranslationId !=null">DISP_TXT_TRANS_ID=#{displayTextTranslationId},</if>
+      <if test="promoName !=null">PROMO_NM=#{promoName},</if>
+      <if test="validStartDate !=null">VLD_STRT_DT=#{validStartDate},</if>
+      <if test="validEndDate !=null">VLD_END_DT=#{validEndDate},</if>
+      <if test="promoThresholdAmount !=null">PROMO_THRSLD_AMT=#{promoThresholdAmount},</if>
+      <if test="promoAlertCount !=null">PROMO_ALRT_CNT=#{promoAlertCount},</if>
+      <if test="promoStatusIndicator !=null">PROMO_STAT_IND=#{promoStatusIndicator},</if>
+      <if test="promoSelectionIndicator !=null">PROMO_SLCTN_IND=#{promoSelectionIndicator},</if>
+      <if test="updateTime != null">UPDT_TMS=#{updateTime},</if>
+    </set>
+    where PROMO_ROW_ID = #{id}
+  </update>
+
+</mapper>

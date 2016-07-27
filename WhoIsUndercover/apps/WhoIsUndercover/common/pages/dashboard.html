@@ -1,0 +1,115 @@
+<div id="dashboard" data-role="page">
+
+	<div data-role="header" data-position="fixed" data-tap-toggle="false"
+		data-theme="b">
+		<!-- <a data-rel="back" data-icon="back" data-role="button" data-iconpos="notext" data-theme="d">Back</a> -->
+		<h1>设置</h1>
+	</div>
+
+	<div data-role="content">
+		<ul id="serviceEvents" data-role="listview" data-inset="false" data-theme="d"
+			data-dividertheme="d">
+			<li data-role="list-divider">角色设置</li>
+			<li>
+				<div class="col-xs-6">
+					<label for="common-amount">平民</label>
+				</div>
+				<div class="col-xs-6">
+					<select name="commone-amount" data-mini="true" id="common-amount">
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+				</div>
+			</li>
+			<li>
+				<div class="col-xs-6">
+					<label for="undercover-amount">卧底</label>
+				</div>
+				<div class="col-xs-6">
+					<select name="undercover-amount" data-mini="true" id="undercover-amount">
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+				</div>
+			</li>
+			<li>
+				<div class="col-xs-6">
+					<label for="whiteboard-amount">白板</label>
+				</div>
+				<div class="col-xs-6">
+					<select name="whiteboard-amount" data-mini="true" id="whiteboard-amount">
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+				</div>
+			</li>
+		</ul>
+		<div id="lexicon-setting" data-toggle="tab" role="tabpanel">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active">
+					<a href="#random-lexicon" aria-controls="random-lexicon" role="tab" data-toggle="tab">随机词库</a>
+				</li>
+				<li role="presentation">
+					<a href="#specified-lexicon" aria-controls="specified-lexicon" role="tab" data-toggle="tab">定制词库</a>
+				</li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="random-lexicon">
+					<form>
+						<fieldset data-role="controlgroup" data-type="horizontal">
+							<label for="type0">饮料
+							<input type="checkbox" data-mini="true" id="type0" value="饮料"
+								name="randomType" /></label>
+
+							<label for="type1">食品
+							<input type="checkbox" data-mini="true" id="type1" value="食品"
+								name="randomType" /></label>
+
+							<label for="type2">动物</label>
+							<input type="checkbox" data-mini="true" id="type2" value="动物"
+								name="randomType" />
+
+							<label for="type3">成语</label>
+							<input type="checkbox" data-mini="true" id="type3" value="成语"
+								name="randomType" />
+
+							<label for="type4">交通工具</label>
+							<input type="checkbox" data-mini="true" id="type4" value="交通工具"
+								name="randomType" />
+
+							<label for="type5">近义词</label>
+							<input type="checkbox" data-mini="true" id="type5" value="近义词"
+								name="randomType" />
+
+							<label for="type6">人物</label>
+							<input type="checkbox" data-mini="true" id="type6" value="人物"
+								name="randomType" />
+						</fieldset>
+					</form>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="specified-lexicon">
+					<ul data-role="listview">
+						<li>
+							<span>平民</span>
+							<input id="common" data-mini="true" name="common" value="鲜橙多" />
+						</li>
+						<li>
+							<span>卧底</span>
+							<input id="undercover" data-mini="true" name="undercover" value="果粒橙" />
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<input data-role="button" value="开始" data-theme="b" />
+	</div>
+</div>
