@@ -1,5 +1,8 @@
 package guerer.example;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /*
  * Write an algorithm to determine if a number is "happy".
 
@@ -14,5 +17,21 @@ package guerer.example;
 
  */
 public class HappyNumber {
+	public static boolean isHappy(int n) {
+		Set<Integer> set = new HashSet<Integer>();
+		while (n != 1 && !set.contains(n)) {
+			set.add(n);
+			n = sumDigit(n);
+		}
+		return n == 1;
+	}
 
+	static int sumDigit(int n) {
+		int sum = 0;
+		for (; n != 0; n /= 10) {
+			int digit = n % 10;
+			sum += digit * digit;
+		}
+		return sum;
+	}
 }
