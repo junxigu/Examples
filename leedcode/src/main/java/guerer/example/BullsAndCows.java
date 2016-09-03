@@ -23,16 +23,32 @@ package guerer.example;
  */
 public class BullsAndCows {
 	public String getHint(String secret, String guess) {
-		int[] tmp = new int[secret.length()];
+		int[] s = new int[10];
+		int[] g = new int[10];
 		int aCount = 0;
 		int bCount = 0;
 
-		for(int i = 0; i < tmp.length; i++) {
-			if(secret.charAt(i) == guess.charAt(i)) {
-				tmp[i] = 1;
+		for (int i = 0; i < secret.length(); i++) {
+			char c1 = secret.charAt(i);
+			char c2 = guess.charAt(i);
+			if (c1 == c2) {
 				aCount++;
+			} else {
+				s[c1 - '0']++;
+				g[c2 - '0']++;
 			}
 		}
-		
+
+		for (int i = 0; i < 10; i++) {
+			if (s[i] > 0 && g[i] > 0) {
+				bCount += Math.min(s[i], g[i]);
+			}
+		}
+		return aCount + "A" + bCount + "B";
+	}
+
+	public static void main(String[] args) {
+		System.out.println(new BullsAndCows().getHint("1807", "7810"));
+		System.out.println(new BullsAndCows().getHint("1123", "0111"));
 	}
 }
