@@ -3,7 +3,21 @@ package guerer.example;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ValidateNum {
+
+/*
+ * Validate if a given string is numeric.
+
+Some examples:
+"0" => true
+" 0.1 " => true
+"abc" => false
+"1 a" => false
+"2e10" => true
+Note: It is intended for the problem statement to be ambiguous. You should gather all requirements up front before implementing one.
+
+ */
+
+public class ValidNumber65 {
 
 	Map<Integer, Map<String, Integer>> states = new HashMap<Integer, Map<String, Integer>>() {
 		{
@@ -68,6 +82,10 @@ public class ValidateNum {
 	}
 
 	public boolean isNumber(String s) {
+		return s.trim().matches("[+-]?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(e[+-]?[0-9]+)?");
+	}
+	
+	public boolean isNumber2(String s) {
 		// trim s
 		// for c in s to judge
 		// is last state end?
