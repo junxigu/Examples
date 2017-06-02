@@ -37,7 +37,7 @@ class Car2 {
 	public void waitForWaxing() throws InterruptedException {
 		lock.lock();
 		try {
-			while (waxOn) {
+			while (!waxOn) {
 				condition.await();
 			}
 		} finally {
@@ -48,7 +48,7 @@ class Car2 {
 	public void waitForBuffing() throws InterruptedException {
 		lock.lock();
 		try {
-			while (!waxOn) {
+			while (waxOn) {
 				condition.await();
 			}
 		} finally {
@@ -90,7 +90,7 @@ class WaxOff2 implements Runnable {
 		try {
 			while (!Thread.interrupted()) {
 				car.waitForWaxing();
-				Print.printnb("Wax off ! ");
+				Print.print("Wax off ! ");
 				TimeUnit.MILLISECONDS.sleep(200);
 				car.buffed();
 			}

@@ -1,7 +1,7 @@
 package guerer.example;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -34,195 +34,82 @@ You may assume beginWord and endWord are non-empty and are not the same.
 
 public class WordLadderII126 {
 
-//	Map<String, Map<Set<String>, List<List<String>>>> results = new HashMap<String, Map<Set<String>, List<List<String>>>>();
-
-//	public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
-//		List<List<String>> result = findMinLenLadders(beginWord, endWord, new HashSet<String>(wordList));
-//		return result == null ? new ArrayList<List<String>>() : result;
-//	}
-
-//	public boolean mapContainSetKey(Map<Set<String>, List<List<String>>> map, Set<String> wordSet) {
-//		for (Set<String> s : map.keySet()) {
-//			if (wordSet.containsAll(s)) {
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
-//
-//	public void addResults(String beginWord, Set<String> wordSet, List<List<String>> list) {
-//		Map<Set<String>, List<List<String>>> subMap = results.get(beginWord);
-//		if(subMap == null) {
-//			subMap = new HashMap<Set<String>, List<List<String>>>();
-//		}
-//		subMap.put(wordSet, list);
-//		results.put(beginWord, subMap);
-//	}
-//	
-//	public List<List<String>> findMinLenLadders(String beginWord, String endWord, Set<String> wordSet) {
-//		// if not cached then findLadders and cache results
-//		if (!results.containsKey(beginWord) || !mapContainSetKey(results.get(beginWord), wordSet)) {
-//			List<String> oneStrDiffStrList = new ArrayList<String>();
-//
-//			// find the nearst words for beginword
-//			for (String s : wordSet) {
-//				if (diff(beginWord, s) == 1) {
-//					oneStrDiffStrList.add(s);
-//				}
-//			}
-//			// if endword belong to oneCharDiffStrList then cache and return the
-//			// list
-//			if (oneStrDiffStrList.contains(endWord)) {
-//				List<List<String>> result = new ArrayList<List<String>>();
-//				List<String> tmp = new ArrayList<String>();
-//				tmp.add(beginWord);
-//				tmp.add(endWord);
-//				result.add(tmp);
-//				
-//				addResults(beginWord, wordSet, result);
-//			}
-//			// else findLadders for nearst words and cache them
-//			else if (oneStrDiffStrList.size() > 0) {
-//				// for each word s in oneCharDiffStrList, findLadders and cached
-//				// it
-//				// and find the min-length ladders for oneCharDiffStrList
-//				int len = Integer.MAX_VALUE;
-//				for (String s : oneStrDiffStrList) {
-//					Set<String> newWordList = new HashSet<String>(wordSet);
-//					newWordList.remove(s);
-//					
-//					List<List<String>> tmpResults = findMinLenLadders(s, endWord, newWordList);
-//					if(tmpResults != null) {
-//						len = Math.min(len, tmpResults.get(0).size());
-//					}
-//				}
-//				
-//				// create ladders with beginword and cache it with shortest string with oneCharDiffStrList
-//				if(len < Integer.MAX_VALUE) {
-//					for (String s : oneStrDiffStrList) {
-//						Map<Set<String>, List<List<String>>> subMap = results.get(s);
-//						if(subMap != null) {
-//							for(Set<String> resultsSet : subMap.keySet()) {
-//								Set<String> newResultsSet = new HashSet<String>(resultsSet);
-//								newResultsSet.add(beginWord);
-//								
-//								List<List<String>> newResultsList = new ArrayList<List<String>>();
-//								for(List<String> l : subMap.get(resultsSet)) {
-//									l.add(0, beginWord);
-//									newResultsList.add(l);
-//								}
-//								Map<Set<String>, List<List<String>>> resultMap = new HashMap<Set<String>, List<List<String>>>();
-//								resultMap.put(newResultsSet, newResultsList);
-//								results.put(beginWord, resultMap);
-//							}
-//						}
-//					}
-//				}
-//			}
-//		}
-//		List<List<String>> resultsList = null;
-//		if(results.get(beginWord) != null) {
-//			resultsList = new ArrayList<List<String>>();
-//			for(List<List<String>> l : results.get(beginWord).values()) {
-//				resultsList.addAll(l);
-//			}
-//		}
-//		return resultsList;
-//	}
-
 	public int diff(String a, String b) {
+		char[] ac = a.toCharArray();
+		char[] bc = b.toCharArray();
+		
 		int result = 0;
 		for (int i = 0; i < a.length(); i++) {
-			result += a.charAt(i) != b.charAt(i) ? 1 : 0;
+			result += ac[i] != bc[i] ? 1 : 0;
 		}
 		return result;
 	}
-
+	
 	public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
-		String begin = beginWord;
-		String end = endWord;
-		List<List<Map<String, Set<String>>>> layers = new ArrayList<List<Map<String, Set<String>>>>();
-		// Generate the map layers
-		if(!generateLayers(layers, begin, end, new HashSet<String>(wordList))) {
-			return new ArrayList<List<String>>();
+		List<List<String>> res = new ArrayList<List<String>>();
+		wordList = new ArrayList<String>(wordList);
+		wordList.remove(beginWord);
+		// generate a tree by map, whose last level contain endWord
+		Map<String, List<String>> tree = new HashMap<String, List<String>>();
+		if(BFS(beginWord, endWord, new HashSet<String>(wordList), tree)) {
+			// DFS tree to create the result list
+			DFS(endWord, res, new ArrayList<String>(Arrays.asList(beginWord)), tree);
 		}
-//		System.out.println("Layers: " + layers);
-		// generate the result list
-		List<List<String>> resultList = new ArrayList<List<String>>();
-		List<String> subList = new ArrayList<String>();
-		subList.add(end);
-		resultList.add(subList);
-		
-		Collections.reverse(layers);
-		for(List<Map<String, Set<String>>> layer : layers) {
-			List<List<String>> tmpList = new ArrayList<List<String>>();
-			for(List<String> subResultList : resultList) {
-				String endStr = subResultList.get(0);
-//				System.out.println(endStr);
-				for(Map<String, Set<String>> map : layer) {
-					for(String key : map.keySet()) {
-						if(map.get(key).contains(endStr)) {
-							List<String> newsubResultList = new ArrayList<String>(subResultList);
-							newsubResultList.add(0, key);
-							tmpList.add(newsubResultList);
-						}
-					}
-				}
-			}
-			resultList = tmpList;
-		}
-		return resultList;
+		return res;
 	}
 	
-	public boolean generateLayers(List<List<Map<String, Set<String>>>> layers, String begin, String end, Set<String> wordList) {
-		int i = 0;
-		Set<String> diffSet = new HashSet<String>(wordList);
-		boolean finded = false;
-		while (true) {
-			// init a set for layer
-			Set<String> set = new HashSet<String>();
-			if(i == 0) {
-				set.add(begin);
-			} else {
-				List<Map<String, Set<String>>> layer = layers.get(i - 1);
-				for(Map<String, Set<String>> map : layer) {
-					for(Set<String> tmpSet : map.values()) {
-						set.addAll(tmpSet);
-					}
-				}
-			}
-			
-			// foreach str in set to generate a map and put in the layer list
-			List<Map<String, Set<String>>> layer = new ArrayList<Map<String, Set<String>>>();
-			diffSet.removeAll(set);
-			
-			for(String str : set) {
-				Map<String, Set<String>> map = new HashMap<String, Set<String>>();
-				Set<String> nextStrSet = new HashSet<String>();
-				
-				for(String s : diffSet) {
-					if(diff(str, s) == 1) {
-						if(s == end) {
-							finded = true;
-						}
-						nextStrSet.add(s);
-					}
-				}
-				if(nextStrSet.size() > 0) {
-					map.put(str, nextStrSet);
-					layer.add(map);
-				}
-			}
-			if(layer.size() > 0) {
-				layers.add(layer);
-			} else {
-				break;
-			}
-			if(finded) {
-				break;
-			}
-			i++;
+	public void DFS(String endWord, List<List<String>> res, List<String> currList, Map<String, List<String>> tree) {
+		// if find the endword put a new result in the res
+		if(currList.contains(endWord)) {
+			res.add(new ArrayList<String>(currList));
 		}
-		return finded;
+		// else
+		else {
+			// for each sub str of last word in currList
+			List<String> subStrs = tree.get(currList.get(currList.size() - 1));
+			if(subStrs != null) {
+				for(String subStr : subStrs) {
+					// put it in currList
+					currList.add(subStr);
+					// recursive the find result
+					DFS(endWord, res, currList, tree);
+					// remove it from currList
+					currList.remove(subStr);
+				}
+			}
+		}
+	}
+	
+	public boolean BFS(String beginWord, String endWord, Set<String> words, Map<String, List<String>> tree) {
+		Set<String> currLevel = new HashSet<String>();
+		currLevel.add(beginWord);
+		// for each level whose size > 0 and don't contain endword
+		while(currLevel.size() > 0 && !currLevel.contains(endWord)) {
+			Set<String> currWords = new HashSet<String>(words);
+			Set<String> nextLevel = new HashSet<String>();
+			// for each str in latest level
+			for(String str : currLevel) {
+				// find sub-strs in currWords
+				List<String> subStrs = findSubStrs(str, currWords);
+				// put it in the tree 
+				tree.put(str, subStrs);
+				// put the sub-strs in next level
+				nextLevel.addAll(subStrs);
+				// remove the sub-strs from words
+				words.removeAll(subStrs);
+			}
+			currLevel = nextLevel;
+		}
+		return currLevel.contains(endWord);
+	}
+
+	private List<String> findSubStrs(String str, Set<String> words) {
+		List<String> level = new ArrayList<String>();
+		for(String s : words) {
+			if(diff(s, str) == 1) {
+				level.add(s);
+			}
+		}
+		return level;
 	}
 }
